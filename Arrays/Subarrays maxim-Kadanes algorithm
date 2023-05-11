@@ -1,0 +1,25 @@
+import java.util.Scanner;
+public class subarrays {
+public static void method3(int arr[],int n){
+            int max=Integer.MIN_VALUE;
+            int cs=0;
+            for(int i =0;i<n;i++){
+                cs=cs+arr[i];
+                if(cs<0){
+                    cs=0;
+                }
+                System.out.println("IM MS"+max);
+                max=Math.max(cs,max);
+            }
+            System.out.println(max);
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        method1(arr,n);
+    }
+}
