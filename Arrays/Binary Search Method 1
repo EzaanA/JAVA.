@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class bonusqstn2 {
+    public static int srch(int arr[],int key,int start,int end) {
+            int mid = (start+end) / 2;
+            if (arr[mid] == key) {
+                return mid;
+            } else if (key > arr[mid]) {
+                return srch(arr,key,mid+1,end);
+            } else {
+                return srch(arr,key,start,mid-1);
+        }
+    }
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int start=0;
+        int key=4;
+        int arr[]={1,2,3,5,6,7};
+        int end=arr.length-1;
+        System.out.println(srch(arr,key,start,end));
+    }
+}
