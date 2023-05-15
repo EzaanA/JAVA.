@@ -1,0 +1,28 @@
+public class triplets {
+    public static void boy(int arr[]) {
+  //so in this process we will just pick up the least element amongst the array & then put it in the first place & later swap it with the other or the larger number
+        for (int m = 0; m < arr.length-1; m++) {
+            int min =m;
+            for (int i = m; i < arr.length; i++) {
+                if (arr[min] > arr[i]) {
+                    min =i;
+                }
+            }
+            int temp=arr[m];
+            arr[m]=arr[min];
+            arr[min]=temp;
+        }
+    }
+    public static void print(int arr[]){
+        for(int i = 0 ;i<arr.length;i++)
+        {
+            System.out.println(arr[i]);
+        }
+    }
+    public static void main(String args[]){
+    int arr[]= {5,4,2,3,1};
+    boy(arr);
+    print(arr);
+    }
+}
+
