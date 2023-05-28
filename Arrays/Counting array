@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class count_array{
+    public static void countingarr(int arr[]){
+        int max=arr[0];
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>max) {
+                max =arr[i];
+            }
+        }
+        int count[]=new int[max+1];
+        for(int j=0;j<count.length;j++){
+            count[arr[j]]++;
+        }
+        int j=0;
+        for(int a=0;a<arr.length;a++){
+            while(count[a]>0){
+                arr[j]=a;
+                count[a]--;
+                j++;
+            }
+        }
+        for(int b=0;b<arr.length;b++) {
+            System.out.print(arr[b]+" ");
+        }
+    }
+    public static void main(String args[]){
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        countingarr(arr);
+        }
+    }
