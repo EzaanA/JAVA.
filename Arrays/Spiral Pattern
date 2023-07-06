@@ -14,6 +14,9 @@ public class spiralpattern {
                 System.out.println(arr[j][endcol]);
             }
             for(int k=endcol-1;k>=startcol;k--){
+                        if(startcol==endcol){
+                                break;          //as in the matrix of 5*5 it will print the midddle term twice for top & bottom both thus this condition is used
+            }
                 System.out.println(arr[endrow][k]);
             }
             for(int b=endrow-1;b>=startrow+1;b--){
