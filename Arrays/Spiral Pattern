@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class spiralpattern {
+    public static void spiralpattern(int[][]arr) {
+        int startrow = 0;
+        int endrow = arr.length - 1;
+        int startcol = 0;
+        int endcol = arr[0].length - 1;
+        while (startrow <= endrow && startcol <= endcol) {
+            for (int i = startcol; i < endcol; i++) {
+                System.out.println(arr[startrow][i]);
+            }
+            for(int j=startrow;j<=endrow;j++){
+                System.out.println(arr[j][endcol]);
+            }
+            for(int k=endcol-1;k>=startcol;k--){
+                System.out.println(arr[endrow][k]);
+            }
+            for(int b=endrow-1;b>=startrow+1;b--){
+                System.out.println(arr[b][startcol]);
+            }
+            startrow++;
+            endrow--;
+            startcol++;
+            endcol--;
+        }
+    }
+    public static void main(String args[]) {
+        int arr[][]={{1,2,3,4},
+                {5,6,7,8},
+                {9,10,11,12},
+                {13,14,15,16}};
+        spiralpattern(arr);
+    }
+}
