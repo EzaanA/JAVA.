@@ -1,0 +1,34 @@
+ import java.util.Scanner;
+public class staircase {
+        public static boolean sor(int arr[][],int key){
+            int row=0,col=arr[0].length-1;
+//started from the very rigth corner because this is a sorted 2d array & from tht position whether u move left or down the numbers always gonna be greater thanthe current number same is applied for the left corner most element 
+        while(row< arr.length && col>=0){
+            if(arr[row][col] == key){
+                System.out.println("FOUND KEY AT: ("+row + ","+col+")");
+                return true;
+            }
+            else if(key<arr[row][col] ){
+                col--;
+            }
+            else{
+                row++;
+            }
+        }
+        System.out.println("KEY NOT FOUND");
+        return false;
+}
+public static void main(String[] args){
+    Scanner sc= new Scanner(System.in);
+    int n=sc.nextInt();
+    int m=sc.nextInt();
+    int arr[][]=new int[n][m];
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            arr[i][j]=sc.nextInt();
+        }
+    }
+    int key=33;
+    sor(arr,key);
+        }
+}
