@@ -1,0 +1,23 @@
+public class newcls {
+    public static String touppercase(String sr){
+        StringBuilder sb = new StringBuilder("");
+        char ch = Character.toUpperCase(sr.charAt(0));
+        sb.append(ch);
+        for(int i=1;i<sr.length();i++){
+            if(sr.charAt(i)==' ' && i<sr.length()-1){
+                sb.append(sr.charAt(i));
+                i++;
+                sb.append(Character.toUpperCase(sr.charAt(i)));
+            }
+            else{
+                sb.append(sr.charAt(i));
+            }
+        }
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        String sr= "hi i am ezaan";
+        System.out.println(touppercase(sr));
+    }
+}
