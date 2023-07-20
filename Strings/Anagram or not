@@ -1,0 +1,32 @@
+import java.util.*;
+public class factor {
+    public static boolean anagrams(String str1,String str2){
+    str1=str1.toLowerCase();
+    str2=str2.toLowerCase();
+
+
+    if(str1.length() ==  str2.length()){
+         char[] strarr1=str1.toCharArray();
+         char[] strarr2=str2.toCharArray();
+        Arrays.sort(strarr1);
+        Arrays.sort(strarr2);
+        boolean result=Arrays.equals(strarr1,strarr2);
+        if(result){
+            return true;
+        }
+    }
+    return false;
+    }
+
+    public static void main(String[] args) {
+        String str1="heart";
+        String str2="earth";
+        anagrams(str1,str2);
+        if(anagrams(str1,str2)){
+            System.out.println("ANAGRAM");
+        }
+        else{
+            System.out.println("NO");
+        }
+    }
+}
