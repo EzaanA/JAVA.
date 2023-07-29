@@ -1,0 +1,11 @@
+public static int optimpow(int x,int n){
+        if(n==1){
+            return x;
+        }
+        int halfpower=optimpow(x,n/2); //here single x^n/2 is stored 
+        int halfpowersqr=halfpower*halfpower;//here (x^n/2 * x^n/2) is stored in a optimized manner as the value will only w=be multiplied twice. 
+        if(n%2!=0){
+            halfpowersqr=x*halfpowersqr;
+        }
+        return halfpowersqr;
+    }
