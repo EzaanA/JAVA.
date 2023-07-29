@@ -1,0 +1,7 @@
+public static int poww(int x,int n){
+        if(n==1){
+            return x;
+        }
+        return x*poww(x,n-1);
+    }
+    
