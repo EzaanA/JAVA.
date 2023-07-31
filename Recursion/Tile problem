@@ -1,0 +1,13 @@
+// to calculate in how many styles can the tiles be adjusted in a given area (only horizontally & vertically);
+    public static int tileproblem(int n){
+        if(n==0 || n==1){
+            return 1;
+        }
+        //for vertical
+        int fm1=tileproblem(n-1);
+
+        //for horizontal
+        int fm2=tileproblem(n-2);
+         return fm1+fm2;
+
+    }
