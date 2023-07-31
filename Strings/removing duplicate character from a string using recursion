@@ -1,0 +1,17 @@
+public static void removeduplicatefromstring(String str , int indx,StringBuilder sb,boolean map[]){
+        if(indx== str.length()){
+            System.out.println("sb");
+            return;
+        }
+        int currchar=str.charAt(indx);
+        if(map[currchar-'a']==true){
+            removeduplicatefromstring(str,indx+1,sb,map);
+        }
+        else {
+            map[currchar-'a']=true;
+            removeduplicatefromstring(str,indx+1,sb.append(currchar),map);
+        }
+    }
+    public static void main(String[] args) {
+        removeduplicatefromstring("appnnacollege" ,0,new StringBuilder(),new boolean[26]);
+       }
