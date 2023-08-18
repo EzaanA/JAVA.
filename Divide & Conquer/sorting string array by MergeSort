@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+public class huttttt {
+    public static void print(String str[]){
+        for(int i=0;i<str.length;i++){
+            System.out.println(str[i]);
+        }
+    }
+    public static void mergesort(String str1[],int start,int end){
+        if(start == end){
+            return;
+        }
+        int mid=start+(end-start)/2;
+        //for left side
+        mergesort(str1,start,mid);
+//        for right side
+        mergesort(str1,mid+1,end);
+
+        merge(str1,start,mid ,end);
+    }
+    public static String[] merge(String str1[],int start,int mid ,int end){
+        String temp[] = new String[end-start+1];
+        int i=start;//starting index for left side array
+        int j =mid+1;//starting index for right side array
+        int k=0;//for idexing of temp array
+        while(i<=mid && j <=end){
+            if(str1[i].compareTo(str1[j])<=0 /*|| str1[i].compareTo(str1[j])==0*/){
+                temp[k]=str1[i];
+                i++;
+            }
+            else{
+                temp[k]=str1[j];
+                j++;
+            }
+            k++;
+        }
+        while(i<=mid){
+            temp[k++]=str1[i++];
+        }
+        while (j<=end){
+            temp[k++]=str1[j++];
+        }
+        for(k=0,i=start;k<temp.length;k++,i++){
+            str1[i]=temp[k];
+        }
+        return str1;
+    }
+    public static void main(String[] args) {
+        String str1[]={"sun","earth", "mars", "mercury"};
+        int end= str1.length-1;
+        int start= 0;
+        mergesort(str1,start,end);
+        print(str1);
+        }
+    }
+
