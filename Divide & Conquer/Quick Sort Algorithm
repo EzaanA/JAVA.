@@ -1,0 +1,57 @@
+//UNCOMMENT things between ***** to understand better//
+public class Quicksort {
+    public static void QuickSort(int arr[],int si,int ei){
+        //last element is our pivot point
+        if (si < ei) {
+            int pivotIdx=partition(arr,si,ei);
+        QuickSort(arr,si,pivotIdx-1);//left
+        QuickSort(arr,pivotIdx+1,ei);//right
+    }}
+    public static int partition(int arr[],int si,int ei){
+        int pivot=arr[ei];
+        //         *********************************************
+//        System.out.println("THE VALUE OF EI IS: "+ei);
+//        System.out.println("VALUE OF SI IS : "+si);
+        //         *********************************************
+        int i=si-1;//to make space for elemnts smaller than pivot
+        for(int j=si;j<ei;j++){
+            //         *********************************************
+//            System.out.println("the value of j is:"+j);
+            //         *********************************************
+            if(arr[j]<=pivot){
+                i++;
+                int temp=arr[j];
+                arr[j]=arr[i];
+                arr[i]=temp;
+                //         *********************************************
+//                System.out.println("ARRAY: "+"the value of i is "+i);
+//                for(int l=0;l<arr.length;l++){
+//                    System.out.print(arr[l]+" ");
+//                }
+//                System.out.println("\n");
+                //         *********************************************
+            }
+        }
+        //ab pivot elemmnt ko bhi shi jagah pe daalna hai to uske lie bhi 1 swap
+        i++;
+        int temp=arr[ei];
+         arr[ei]=arr[i];//pivot =arr[i] nhi likhna hai remember this
+         arr[i]=temp;
+//         *********************************************
+//         System.out.println("THIS IS LOOP @: ");
+//        for(int l=0;l<arr.length;l++){
+//            System.out.print(arr[l]+" ");
+//        }
+//        System.out.println("\n");
+//    System.out.println("THIS IS THE VALUE OF PIVOT: "+i);
+        //         *********************************************
+        return i;
+    }
+    public static void main(String[] args) {
+    int arr[]={3,6,9,8,2,5,11};
+    QuickSort(arr,0,arr.length-1);
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+}
