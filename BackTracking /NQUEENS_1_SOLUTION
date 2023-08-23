@@ -33,7 +33,7 @@ public class NQueen_1_soln {
 
     public static boolean NQueensproblem(char board[][], int row) {
         if (row == board.length) {
-//            printf(board);
+            printf(board);
             return true;
         }
         for (int j = 0; j < board.length; j++) {
@@ -50,7 +50,7 @@ public class NQueen_1_soln {
     }
 
     public static void main(String[] args) {
-        int n = 5;
+        int n = 3;
         char Board[][] = new char[n][n];
         for (int i = 0; i < Board.length; i++) {
             for (int j = 0; j < Board.length; j++) {
@@ -58,13 +58,13 @@ public class NQueen_1_soln {
             }
         }
         if (NQueensproblem(Board, 0)) {
-            for (int i = 0; i < Board.length; i++) {
-                for (int j = 0; j < Board.length; j++) {
-                    System.out.print(Board[i][j]);
+
+            System.out.print("SOLUTION IS POSSIBLE");
                 }
-                System.out.println();
+        else{
+             System.out.println("NOT POSSIBLE");
             }
         }
 
     }
-}
+
