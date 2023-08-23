@@ -1,0 +1,19 @@
+public class SlidingWindows {
+    public static int SlidingWindowsf(int arr[],int k) {
+        int sumWindows=0;
+        for(int i=0;i<k;i++){
+            sumWindows+=arr[i];
+        }
+        int maxsum=0;
+        maxsum= Math.max(sumWindows,maxsum);// incase if the first k elements are the max sum.
+        for(int i=k;i<arr.length;i++){
+            sumWindows+=arr[i]-arr[i-k];
+            maxsum=Math.max(sumWindows,maxsum);
+        }
+        return maxsum;
+    }
+    public static void main(String[] args) {
+        int arr[]={10,9,-1,-2,7,3,-1,2};
+        System.out.println(SlidingWindowsf(arr,4));
+    }
+}
