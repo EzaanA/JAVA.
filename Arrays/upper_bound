@@ -1,0 +1,22 @@
+public class upper_bound {
+    public static int find_Upper_Bound(int arr[],int target) {
+    int low = 0;
+    int high = arr.length-1;
+    int ans = arr.length;
+        while (low <= high) {
+        int mid = low + (high - low) / 2; // Corrected this line
+        if (arr[mid] > target) {
+            ans = mid;
+            high = mid - 1;
+        } else {
+            low = mid + 1;
+        }
+    }
+        return ans;
+    }
+    public static void main(String[] args) {
+        int arr[]={2,3,6,7,8,8,11,11,11,12};
+        int target=12;
+        System.out.println(find_Upper_Bound(arr,target));
+    }
+}
