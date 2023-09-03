@@ -1,0 +1,63 @@
+class Solution {
+    public int searchInsert(int[] arr, int target) {
+    //First way 
+        // int start=0,end=arr.length-1;
+        // while(end>=start){
+        //     int mid=(start+end)/2;
+        //     if(target==arr[mid]){
+        //         return mid;
+        //     }
+        //     else if(target>arr[mid]){
+        //         start=mid+1;
+        //     }
+        //     else{
+        //         end=mid-1;
+        //     }
+        // }
+        // for(int i=0;i<arr.length-1;i++){
+        //     if(arr[i]<target && arr[i+1]>target){
+        //        start=i+1; 
+        //     }
+        // }
+        // return start;
+        // __________________________________________________
+        //SECOND WAY
+        // int low=0;
+        // int high=arr.length-1;
+        // int ans=arr.length;
+        // while(low<=high){
+        //     int mid=low+(high-low)/2;
+        //     if(arr[mid]>=target){
+        //         ans=mid;
+        //         high=mid-1;
+        //     }
+        //     else{
+        //         low=mid+1;
+        //     }
+        // }
+        // return ans;
+        // ________________________________________
+        //THIRD & mOST OPTIMIED WAY
+        int n=arr.length;
+        int low=0;
+        int high=n-1;
+        int ans=-1;
+        while(low<=high){
+            int mid=low+(high-low)/2;
+        if(arr[mid]==target){
+            return mid;
+        }
+        else if(arr[mid]>target){
+            ans=mid;
+            high=mid-1;
+        }
+        else{
+            low=mid+1;
+        }
+        }
+        if(ans==-1){
+            ans=n;
+        }  
+        return ans;
+    }
+}
