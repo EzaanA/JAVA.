@@ -1,8 +1,11 @@
+//PS: the majority element is a n/2 times;
+
 public class Majrity_Element {
     public static int finding_majority(int arr[]){
         int count=1;
         int maj_el=arr[0];
         for(int i=1;i<arr.length;i++){
+
             if(maj_el==arr[i]){
                 maj_el=arr[i];
                 count++;
