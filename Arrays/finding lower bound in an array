@@ -1,0 +1,25 @@
+public class lower_bound {
+    public static void finding_lower_bound(int arr[], int target) {
+        int low = 0;
+        int high = arr.length-1;
+        int ans = arr.length;//we put this as n bcz the out of bound character can be given eg:15 then obviously its lower bound will be 11
+        while (low <= high) {
+            int mid = low + (high - low) / 2; // Corrected this line
+            if (arr[mid] >= target) {
+//this might be our answer
+                ans = mid;
+// but we also check the previous number before mid so as to confirm whether or not it'll be the lower bound or not; 
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        System.out.println(ans);
+    }
+
+    public static void main(String[] args) {
+        int arr[] = {1, 2, 3, 3, 5, 8, 8, 10, 10, 11};
+        int target = 12;
+        finding_lower_bound(arr, target);
+    }
+}
