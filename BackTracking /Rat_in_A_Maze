@@ -1,0 +1,53 @@
+public class Rat_In_A_Maze {
+
+
+    public static void display(int arr[][]) {
+        System.out.println("__________________________");
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                System.out.print(arr[i][j]);
+            }
+            System.out.println();
+        }
+        System.out.println("__________________________");
+    }
+
+    public static void ratinmaze(int arr[][], int row, int col, int n, int output[][]) {
+
+//base case
+        if (row == n || col == n) {
+            return;
+        }
+
+        if (arr[row][col] == 0) {
+            output[row][col] = 0;
+            return;
+        }
+
+        output[row][col] = 1;
+        if (row == n - 1 && col == n - 1) {
+            display(output);
+            return;
+        }
+
+
+
+
+
+        ratinmaze(arr, row + 1, col, n, output);
+        ratinmaze(arr, row, col + 1, n, output);
+        output[row][col] = 0;
+
+    }
+
+
+    public static void main(String[] args) {
+        int arr[][] = { { 1, 0, 0, 0 },{ 1, 1, 0, 1 },{ 0, 1, 0, 0 },{ 1, 1, 1, 1 } };
+        int output_arr[][] = new int[arr.length][arr.length];
+//        int[][] output_arr = new int[][arr.length, arr.length]
+        ratinmaze(arr, 0, 0, 4, output_arr);
+
+        }
+    }
+
+
