@@ -1,0 +1,32 @@
+//check notebook for better ubderstanding
+import java.util.*;
+public class Keypad_Combination {
+    static  String[] str= {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+
+    public static void display(String str1){
+        System.out.print(str1+" , ");
+    }
+    public static void numtochar(String num,int i,String output) {
+if( i==num.length()){
+    display(output);
+    return;
+}
+
+        int number = num.charAt(i)-'0';
+        String temp=str[number];
+        for(int j=0;j<temp.length();j++){
+            output+=(temp.charAt(j));
+            numtochar(num,i+1,output);
+            output = output.substring(0, output.length() - 1); // Backtrack by removing the last character
+        }
+    }
+
+
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        String num="23";
+        System.out.println(num.charAt(0));
+        String str1=new String("");
+        numtochar(num,0,str1);
+    }
+}
