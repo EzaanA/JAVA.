@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+
+public class Container_with_most_water_2 {
+    public static int checking(ArrayList<Integer> arr){
+        int maxWater=0;
+        int right=arr.size()-1;
+        int left=0;
+        while(left<right){
+            int ht=Math.min(arr.get(left),arr.get(right));
+            int width=right-left;
+            int currWater=ht*width;
+            maxWater=Math.max(currWater,maxWater);
+            if(arr.get(left)< arr.get(right)){
+                left++;
+            }
+            else{
+                right--;
+            }
+        }
+        return maxWater;
+    }
+
+
+
+    public static void main(String[] args) {
+        ArrayList<Integer> list= new ArrayList<>();
+        list.add(1);
+        list.add(8);
+        list.add(6);
+        list.add(2);
+        list.add(5);
+        list.add(4);
+        list.add(8);
+        list.add(3);
+        list.add(7);
+
+        System.out.println(checking(list));
+    }
+}
