@@ -1,0 +1,44 @@
+import java.util.*;
+
+public class Pair_Sum2 {
+    public static  boolean searchsum(ArrayList<Integer> list,int target){
+        int leftpointer=-1;
+        int rightpointer=-1;
+        for(int i=0;i<list.size()-1;i++){
+            if(list.get(i)>list.get(i+1)){
+                leftpointer=i+1;
+                rightpointer=i;
+                break;
+            }
+        }
+
+        while (leftpointer!=rightpointer){
+
+        if(list.get(leftpointer)+list.get(rightpointer)==target){
+            System.out.println(list.get(leftpointer)+"+"+list.get(rightpointer)+"="+target);
+            return true;
+        }
+        else if(list.get(leftpointer)+list.get(rightpointer) < target){
+            leftpointer=(leftpointer+1)%(list.size());//(lp+1)%n   //MODULAR ARITHEMATICS
+        }
+        else if(list.get(leftpointer)+list.get(rightpointer) > target){
+           rightpointer=((list.size()-1)+rightpointer-1)%(list.size());//(n+rp-1)%n // Modular Arithematics
+        }
+    }
+        return false;
+    }
+
+
+    public static void main(String[] args) {
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(11);
+        list.add(15);
+        list.add(6);
+        list.add(8);
+        list.add(9);
+        list.add(10);
+        int target =14;
+        System.out.println(searchsum(list,target));
+
+    }
+}
