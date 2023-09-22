@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+
+public class Pair_Sum1 {
+
+    public static boolean pairsumtp(ArrayList<Integer> list,int target){
+        int start=0;
+        int end=list.size()-1;
+        while(start<=end){
+            if(list.get(start)+list.get(end)==target){
+                return  true;
+            }
+            else if(list.get(start)+list.get(end)>target){
+                end--;
+            }
+            else{
+                start++;
+            }
+        }
+        return  false;
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Integer> list=new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        int target =50;
+       System.out.println(pairsumtp(list,target));
+    }
+}
