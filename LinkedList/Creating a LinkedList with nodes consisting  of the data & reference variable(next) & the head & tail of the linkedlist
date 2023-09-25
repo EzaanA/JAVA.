@@ -1,0 +1,20 @@
+public class Linkdlist {
+    public static class Node{
+        int data;
+        Node next;//refernce variable 
+        public Node(int data){
+            this.data=data;
+            this.next=null;//initialising next with null 
+        }
+    }
+//since the  head & the tail wont chnage for the linkedlist so we use static; 
+    public static Node head;
+    public static Node tail;
+
+    public static void main(String[] args) {
+        Linkdlist ll = new Linkdlist();
+        ll.head=new Node(1);
+        ll.head= new Node(2);
+    }
+
+}
