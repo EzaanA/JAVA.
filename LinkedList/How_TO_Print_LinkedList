@@ -1,0 +1,65 @@
+public class LinkdList_addLast {
+
+    public class Node{
+        int data;
+        Node next;
+
+        public Node(int data){
+            this.data=data;
+            this.next=null;
+        }
+    }
+
+    public static Node head;
+    public static Node tail;
+    public  void addFirst(int data){
+        Node newNode= new Node(data);
+        if(head==null){
+            head=tail=newNode;
+            return;
+        }
+        newNode.next=head;
+        head=newNode;
+    }
+
+
+    public  void addLast(int data){
+        //Step 1:
+        Node newNode = new Node(data);
+        if(head==null){
+            head= tail= newNode;
+            return;
+        }
+        //Step 2: STORING THE ADDRESS
+        tail.next = newNode;
+        //STEP 3 : CHANGING THE POSITION OF HEAD
+
+        tail = newNode;
+    }
+//_____________________the main body __________________________
+    public void printf(){
+
+        if(head==null){
+            System.out.println("LL is empty");
+            return;
+        }
+
+
+        Node temp = head;
+        while (temp!=null){
+            System.out.print(temp.data+" ");
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+//_________________________________________________________________
+
+    public static void main(String[] args) {
+        LinkdList_addLast ll = new LinkdList_addLast();
+        ll.addFirst(1);
+        ll.addFirst(2);
+        ll.addLast(3);
+        ll.addLast(4);
+        ll.printf();
+    }
+}
