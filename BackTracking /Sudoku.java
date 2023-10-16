@@ -40,7 +40,7 @@ public class Sudoku {
                 nextCol=0;//agli row k col=0 se start karna hoga
             }
 
-            if(arr[row][col]!=0){// like jo elemnts pehle se hi diye hue hain
+            if(arr[row][col]!=0){// like jo elemnts pehle se hi diye hue hain agr vo apni jgah p pehle se hi honge to ham dusre elemnt k liye chek krnge
                 return sudukosolve(arr,nextRow,nextCol);
             }
 
