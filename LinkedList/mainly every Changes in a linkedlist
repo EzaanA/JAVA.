@@ -1,0 +1,116 @@
+public class Linkdll {
+
+    public static  class Node{
+        int data;
+        Node next;
+        public Node(int data){
+            this.data=data;
+            this.next= null;
+        }
+    }
+    public static Node head;
+    public static Node tail;
+
+
+    public static void add(int data) {
+        Node newN = new Node(data);
+        if (head == null) {
+            head = newN;
+            tail = newN;
+        } else {
+            tail.next = newN;
+            tail = newN;
+        }
+    }
+
+    public  static  void print(){
+        Node temp = head;
+        while(temp!=null){
+            System.out.print(temp.data+" ");
+            temp = temp.next;
+        }
+    }
+
+    public  static void addfirst(int data){
+        Node newNo = new Node(data);
+        if(head == null){
+            head = tail = newNo;
+        }
+        newNo.next = head;
+        head = newNo;
+    }
+
+    public static void addmid(int indx,int data){
+        if(indx == 0){
+            addfirst(data);
+            return;
+        }
+
+
+        Node newNO = new Node(data);
+        Node temp = head;
+        int i = 0 ;
+        while (i<indx-1){
+            temp = temp.next;
+            i++;
+        }
+        newNO.next = temp.next;
+        temp.next= newNO;
+    }
+
+    public static int size(){
+        Node temp= head;
+        int i =0;
+        while(temp!=null){
+            temp=temp.next;
+            i++;
+        }
+        return i;
+    }
+
+    public static void RemoveFirst(){
+        if(size()==0){
+            System.out.println("the linked lsit is empty");
+        }
+        head = head.next;
+    }
+    public static void Removelast(){
+        if(size()==0){
+            System.out.println("ITS EMPTY");
+        }
+        Node temp= head;
+        int i =0;
+        while(i<size()-2){
+            temp = temp.next;
+            i++;
+        }
+//        temp.next=null;
+        tail= temp;
+       // tail.next=null;//--> how would this make  difference if i use it here
+
+    }
+
+    public static void main(String[] args) {
+        Linkdll ll = new Linkdll();
+        ll.add(2);
+        ll.add(4);
+        ll.add(6);
+        ll.add(8);
+        ll.add(10);
+        print();
+        ll.addfirst(1);//adds the element at the starting point
+        System.out.println();
+        print();
+        ll.addmid(2,45);
+        System.out.println();
+        print();//prints all the elements in the linked list
+        System.out.println();
+        System.out.println(ll.size());
+        ll.RemoveFirst();//remove the first elemnt from the linked list
+        print();
+        ll.Removelast();//remove the last elemnt from the linked list
+        System.out.println();
+        print();
+        System.out.println("\n"+size());
+    }
+}
