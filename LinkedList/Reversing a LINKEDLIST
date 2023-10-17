@@ -1,0 +1,67 @@
+public class Reverse_A_LL {
+    public static class Node{
+        int data;
+        Node next;
+        public Node(int data){
+            this.data=data;
+            this.next= null;
+        }
+    }
+
+    public static Node head;
+    public static Node tail;
+
+    public static void add(int data){
+        Node newNo= new Node(data);
+        if(head==null) {
+            head = newNo;
+            tail=newNo;
+        }
+        else {
+            tail.next= newNo;
+            tail= newNo;
+        }
+    }
+    public static  void print(){
+        Node temp = head;
+    while(temp!=null){
+        System.out.print(temp.data+" ");
+        temp= temp.next;
+    }
+    }
+    public static void addp(){
+        System.out.println();
+        Node temp = head;
+        System.out.println(temp);
+        while(temp !=null){
+            System.out.print(temp.next+"_____________");
+            temp = temp.next;
+        }
+    }
+    public static void Reversell(){
+        Node prev= null ;
+        Node curr= head;
+        Node nxt;
+        while(curr!=null){
+            nxt=curr.next;
+            curr.next=prev;
+            prev =curr;
+            curr= nxt;
+        }
+head=prev;
+
+    }
+    public static void main(String[] args) {
+        Reverse_A_LL ll = new Reverse_A_LL();
+        ll.add(1);
+        ll.add(2);
+        ll.add(3);
+        ll.add(4);
+        ll.add(5);
+        print();
+        System.out.println();
+        ll.Reversell();
+        print();
+//        ll.addp();
+    }
+}
