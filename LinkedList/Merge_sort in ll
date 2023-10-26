@@ -1,4 +1,4 @@
-import java.util.LinkedList;
+//import java.util.LinkedList;
 public class MergeSort_LL {
 
     public static class Node{
@@ -34,22 +34,35 @@ public class MergeSort_LL {
         }
         return slow;
     }
-    public static Node MergeSort(Node head){
-        //base case
-        if(head==null || head.next==null){
-            return head;
+
+
+
+
+
+    public static void print(){
+        Node temp=head;
+        while(temp!=null){
+            System.out.print(temp.data+" ");
+            temp = temp.next;
+        }
+    }
+
+    public static void reverse(Node mid){
+        Node prev = null;
+        Node curr = mid;
+        Node nxt;
+        while(curr!=null){
+            nxt=curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr= nxt;
         }
 
-//        Step 1: finding Mid
-        Node mid = mid(head);
-//        left & right ms
-        Node righthead= mid.next;
-        mid.next=null;
-        Node newleft = MergeSort(head);
-        Node newright = MergeSort(righthead);
-        //merge
-        return Merge(newleft,newright);
+        head=prev;
     }
+
+
+
 
     public static Node Merge(Node head1,Node head2){
         Node mergedll =new Node(-1);
@@ -76,32 +89,49 @@ public class MergeSort_LL {
             head2=head2.next;
             temp= temp.next;
         }
-
         return mergedll.next;
-
     }
 
-    public static void print(){
-        Node temp=head;
-        while(temp!=null){
-            System.out.print(temp.data+" ");
-            temp = temp.next;
+    public static Node MergeSort(Node head){
+        //1-2-3-4-5
+        //base case
+        if(head==null || head.next==null){
+            return head;
         }
+
+//        Step 1: finding Mid
+        Node mid = mid(head);//3
+//        left & right mergesort
+        Node righthead= mid.next;//now the right head points towards 3
+        mid.next=null;////- thus (head)👉1-2-3->null &&  (righthead)👉4-5;
+        Node newleft = MergeSort(head);
+        Node newright = MergeSort(righthead);
+        //merge
+        return Merge(newleft,newright);
     }
+
+
 
 
     public static void main(String[] args) {
 //    LinkedList<Integer> ll = new LinkedList<>();
         MergeSort_LL ll = new MergeSort_LL();
         ll.add(5);
-        ll.add(4);
+        ll.add(23);
         ll.add(3);
-        ll.add(2);
+        ll.add(22);
         ll.add(1);
-        System.out.println("THIS is the ll");
-        print();
-        System.out.println("\nTHIS is the SORTED LL");
-                ll.head = ll.MergeSort(head);
-                print();
+//        System.out.println("THIS is the ll");
+//        print();
+//        System.out.println("\nTHIS is the SORTED LL");
+//                ll.head = ll.MergeSort(head);
+//                print();
+//        ll.zigzag();
+//        ll.reverse(mid(head));
+        ll.print();
+//        ll.MergeSort(head);
+        System.out.println();
+        ll.head=ll.MergeSort(ll.head);
+        ll.print();
     }
 }
