@@ -32,6 +32,7 @@ public class MergeSort_LL {
             slow= slow.next;
             fast = fast.next.next;
         }
+        System.out.println(slow.data);
         return slow;
     }
 
@@ -116,6 +117,7 @@ public static void zigzag(){
 //    mid.next=null;
     Node prev =null;
     Node curr = mid.next;
+    System.out.println("THIS IS curr : "+curr.data);
     mid.next=null;
     Node nxt;
     while(curr !=null){
@@ -124,12 +126,13 @@ public static void zigzag(){
         prev= curr;
         curr=nxt;
     }
+    System.out.println("THIS IS PREV : "+prev.data + "THIS IS hea : "+head.data);
     Node righthead=prev;
     Node lefthead = head;
     Node nextl;
     Node nextr;
 //    System.out.println("righthead is : "+righthead.data+ "left head is :"+lefthead.data);
-    while(lefthead.next!=null && righthead!=null){
+    while(lefthead!=null && righthead!=null){
         nextl=lefthead.next;      //^^^|
         lefthead.next=righthead; //    |_ ZIGZAG
         nextr=righthead.next;   //     |
