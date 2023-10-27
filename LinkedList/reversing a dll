@@ -1,0 +1,119 @@
+public class Doubly_LL {
+
+    public class Node{
+        int data;
+        Node next;
+        Node prev;
+        public Node(int data){
+            this.data=data;
+            this.next=null;
+            this.prev=null;
+        }
+    }
+    public static Node head;
+    public static Node tail;
+    public static int size;
+//_____________________ADDFIRST_______________________
+    public  void addFirst(int data){ //what happens if i add static psv
+        Node newNode = new Node(data);
+        size++;
+        if(head==null){
+            head=tail=newNode;
+            return;
+        }
+        newNode.next=head;
+        head.prev=newNode;
+        head=newNode;
+    }
+//_____________________PRINT_______________________
+    public void printdll(){
+        Node temp = head;
+        while(temp !=null){
+            System.out.print(temp.data+" <-> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+
+    public static void printprev(){
+        Node temp=tail;
+        System.out.print("null");
+
+        while(temp!=null){
+            System.out.print("<-"+temp.data);
+            temp = temp.prev;
+        }
+    }
+
+    public static int  removeFirst(){
+        if(head==null){
+            System.out.println("DLL IS EMPTY");
+            return Integer.MIN_VALUE;
+        }
+        if(size==1){
+            int val = head.data;;
+            head=tail=null;
+            return val;
+        }
+        int val = head.data;
+        head=head.next;
+        head.prev=null;
+        return val;
+    }
+
+
+    public  void addlast(int data){
+        Node newNode = new Node(data);
+
+
+        tail.next=newNode;
+        newNode.next=null;
+        newNode.prev=tail;
+        tail=newNode;
+    }
+
+
+    public static void removelast(){
+        tail.prev.next=null;
+        tail=tail.prev;
+    }
+
+
+    public static void reversedll(){
+            Node previs=null;
+            Node curr= head;
+            Node nxt;
+            while(curr!=null){
+                nxt = curr.next;
+                curr.next= previs;
+                curr.prev= nxt;
+                previs=curr;
+                curr=nxt;
+            }
+            head=previs;
+    }
+
+
+    public static void main(String[] args) {
+        Doubly_LL dll = new Doubly_LL();
+        dll.addFirst(3);
+        dll.addFirst(2);
+        dll.addFirst(1);
+        dll.addFirst(0);
+        dll.printdll();
+        System.out.println("the removed value is "+dll.removeFirst());
+        dll.printdll();
+        System.out.println("____before adding_____");
+        dll.addlast(4);
+        dll.printdll();
+        System.out.println("____after adding____");
+        dll.printprev();
+        dll.removelast();
+        System.out.println("_______________________________________");
+//        dll.printdll();
+        dll.printprev();
+        System.out.println("\n__________REVERSING a dll____________---");
+        dll.reversedll();
+        dll.printdll();
+    }
+}
