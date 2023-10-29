@@ -1,0 +1,44 @@
+//n a system, there are two singly linked lists. Due to a programming error, the end node of one of the linked lists got linked to the second list, forming an 
+//inverted Y-shaped list. Write a program to find the point where the two linked lists merge.
+
+public class Qst1LL {
+        public static class Node {
+            int data;
+            Node next;
+            public Node(int data){
+                this.data=data;
+                this.next=null;
+            }
+        }
+
+        public static Node intersection(Node head1 ,Node head2){
+            while(head1!=null){
+                Node temp2= head2;
+                while(temp2!=null){
+                    if(head1.data == temp2.data){
+                        return  temp2;
+                    }
+                       temp2=temp2.next;
+                }
+                head1=head1.next;
+            }
+            return null;
+        }
+    public static void main(String[] args) {
+            Qst1LL ll = new Qst1LL();
+        Node head1, head2;// didnt declare the head static bcz that would assign a single head to the whole linked list 
+        head1 = new Node(10);//where the linked list looked like this :
+        head2 = new Node(3);//     HEAD1------>10------------->15 -> 30 
+        Node newNode = new Node(6);//HEAD2-------->3-> 6 -> 9 ↗
+        head2.next = newNode;
+        newNode = new Node(9);
+        head2.next.next = newNode;
+        newNode = new Node(15);
+        head1.next = newNode;
+        head2.next.next.next = newNode;
+        newNode = new Node(30);
+        head1.next.next = newNode;
+        head1.next.next.next = null;
+         System.out.println((ll.intersection(head1,head2)).data);
+        }
+}
