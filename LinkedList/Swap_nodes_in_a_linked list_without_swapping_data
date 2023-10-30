@@ -1,0 +1,115 @@
+//check NOTEBOOK FOR BETTER EXPLANATION
+public class Qst3LL {
+    public class Node{
+        int data;
+        Node next;
+        public Node(int data){
+            this.data=data;
+            this.next=null;
+        }
+    }
+    public static Node head;
+    public static Node tail;
+
+    public  void add(int data){
+        Node newNode = new Node(data);
+        if(head==null){
+            head=tail=newNode;
+        }
+        else{
+            tail.next=newNode;
+            tail= newNode;
+        }
+    }
+
+    public  static  void print(){
+        Node temp = head;
+        while(temp!=null){
+            System.out.print(temp.data+" ");
+            temp = temp.next;
+        }
+    }
+
+
+//    public static void swap(int x,int y){
+//        Node temp = head;
+//        Node yy=head;
+////        System.out.println("THIS IS TEMP"+temp.data);
+//
+//        for(int i=0;i<x-2;i++){
+//            temp = temp.next;
+////            System.out.println("THIS IS TEMP"+temp.data);
+//        }
+//        for(int j=0;j<y-2;j++){
+//            yy=yy.next;
+////            System.out.println("THIS IS YY"+yy.data);
+//        }
+
+
+//        Node ely=yy.next;
+//        Node elx= temp.next;
+//        temp.next=ely;
+//        ely.next=elx.next;
+//        yy.next=elx;
+//        elx.next=yy.next.next;
+//        System.out.println("temp.next.next "+temp.next.next.data);
+////        ely.next=temp.next.next;
+//    }
+
+
+        public void swapNodes(int x, int y)
+        {
+            // Nothing to do if x and y are same
+            if (x == y)
+                return;
+
+            // Search for x (keep track of prevX and CurrX)
+            Node prevX = null, currX = head;
+            while (currX != null && currX.data != x) {
+                prevX = currX;
+                currX = currX.next;
+            }
+
+            // Search for y (keep track of prevY and currY)
+            Node prevY = null, currY = head;
+            while (currY != null && currY.data != y) {
+                prevY = currY;
+                currY = currY.next;
+            }
+
+            // If either x or y is not present, nothing to do
+            if (currX == null || currY == null)
+                return;
+
+            // If x is not head of linked list
+            if (prevX != null)
+                prevX.next = currY;
+            else // make y the new head
+                head = currY;
+
+            // If y is not head of linked list
+            if (prevY != null)
+                prevY.next = currX;
+            else // make x the new head
+                head = currX;
+
+            // Swap next pointers
+            Node temp = currX.next;
+            currX.next = currY.next;
+            currY.next = temp;
+        }
+
+
+    public static void main(String[] args) {
+        Qst3LL ll = new Qst3LL();
+        ll.add(1);
+        ll.add(2);
+        ll.add(3);
+        ll.add(4);
+        ll.add(5);
+        ll.add(6);
+        int x=2,y=5;
+        ll.swapNodes(2,5);
+        print();
+    }
+}
