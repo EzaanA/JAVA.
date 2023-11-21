@@ -1,0 +1,75 @@
+//Reversing a string  using stack
+import java.util.ArrayList;
+import java.util.Stack;
+
+public class Stackk {
+
+    static class Node{
+        char data;
+        Node next;
+        public Node(char data){
+            this.data= data;
+            this.next= null;
+        }
+    }
+
+
+    static class Stack{
+        static Node head = null;//more like creating a head node or like a likedlist has been created inside the stack
+        public static boolean isEmpty(){
+            if(head==null){
+                return true;
+            }
+            return false;
+        }
+
+        //push
+        public static void push(char data){
+            Node newNode = new Node(data);
+            if(isEmpty()){
+                head= newNode;
+                return;
+            }
+        newNode.next= head;
+            head= newNode;
+        }
+
+
+        public static int pop(){
+            int top= head.data;
+            head=head.next;
+            return top;
+        }
+        public static int peek(){
+            int top= head.data;
+            return  top;
+        }
+
+        public static void print(){
+            Node temp = head;
+            while(temp!=null){
+                System.out.print(temp.data);
+                temp= temp.next;
+            }
+        }
+
+public static void revstr(Stack s, String str){
+    for(int i=0;i<str.length();i++){
+        s.push(str.charAt(i));
+    }
+}
+    }
+
+    public static void main(String[] args) {
+    Stack s = new Stack();
+//    s.push(1);
+//    s.push(2);
+//    s.push(3);
+//    s.push(4);
+//    s.pushatbottom(s,5);
+        String str = "abc";
+        s.revstr(s,str);
+    s.print();
+    }
+
+}
