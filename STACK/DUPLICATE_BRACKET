@@ -1,0 +1,37 @@
+import java.util.*;
+public class Duplicate_Parentesis {
+
+    public static boolean dupornot(String str){
+        Stack<Character>  stak = new Stack<>();
+        for(int i=0;i<str.length();i++){
+            char ch = str.charAt(i);
+            if(ch==')' ){
+                int count=0;
+                while(stak.peek()!='('){
+                    stak.pop();
+                    count++;
+                }
+                if(count<1){//jese hi count 0 se kam hogya to bss duplicate aaagya
+                    return true;
+                }
+                else {
+                    stak.pop();//we did this bcz jo opening bracket tha vo duplicate nhi tha so hamne use pop krwana tha vrna baadme vo problm deta like vo stack me hi pada reh jata
+                }
+            }
+            else {
+                stak.push(ch);
+            }
+        }
+        return  false;
+    }
+
+
+    public static void main(String[] args) {
+        String str = "(((a+b)+(c+d)))";
+        if(dupornot(str))
+        System.out.println("duplicate hai");
+        else{
+            System.out.println(" duplicate nhi hai");
+        }
+    }
+}
