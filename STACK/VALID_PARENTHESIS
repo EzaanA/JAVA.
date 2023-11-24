@@ -1,0 +1,33 @@
+import java.util.*;
+public class Valid_Paranthesis {
+
+    public static boolean check(String str ) {
+        Stack<Character> s = new Stack<>();
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '(' || str.charAt(i) == '{' || str.charAt(i) == '[') {
+                s.push(str.charAt(i));
+            } else if (str.charAt(i) == ')' || str.charAt(i) == '}' || str.charAt(i) == ']') {
+                if (s.isEmpty()) {
+                    return false;
+                }
+                char ch = s.peek();
+                if ((str.charAt(i) == ')' && ch == '(') || (ch == '{' && str.charAt(i) == '}') || (ch == '[' && str.charAt(i) == ']')) {
+                    s.pop();
+                }
+                else return false;
+            }
+        }
+
+        if (s.isEmpty()) {//this condition is implemented for paranthesis like this "(({([])}" where (( will be stored in the stack thus no valid paranthesis
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public static void main(String[] args) {
+        String str = "{()}()[]";
+        System.out.println(check(str));
+    }
+}
