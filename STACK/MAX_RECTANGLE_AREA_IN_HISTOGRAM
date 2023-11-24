@@ -1,0 +1,66 @@
+//TO UNDERSTAND THIS QUESTION BETTER DO TAKE A LOOK ON NEXT GREATER ELEMENT QSTN IN YOUR REPOSITORY
+import java.util.*;
+public class MAX_AREA_IN_HISTOGRAM {
+    static  int arr[]= {2,1,5,6,2,3};
+
+    public static int[] nextSmallerLeft(int nsl[])
+    {
+        Stack<Integer> stak= new Stack<>();
+        for(int i=0;i<arr.length;i++) {
+            int num = arr[i];
+                while(!stak.isEmpty() && num<arr[stak.peek()]){
+                    stak.pop();
+                }
+                if(stak.isEmpty()){
+                    nsl[i]=-1;
+                }
+                else{
+                    nsl[i]=stak.peek();
+                }
+                stak.push(i);
+        }
+        return  nsl;
+        }
+
+        public static int[] nextSmallerRight(int nsr[]){
+            Stack<Integer> stak = new Stack<>();
+            for(int i=arr.length-1;i>=0;i--){
+                int num = arr[i];
+                while(!stak.isEmpty() && num<arr[stak.peek()]){
+                    stak.pop();
+                }
+                if(!stak.isEmpty()){
+                    nsr[i]= stak.peek();
+                }
+                else{
+                    nsr[i]=arr.length;
+                }
+                stak.push(i);
+            }
+            return  nsr;
+        }
+
+
+    public static int calculatingMaxAreaInHistogram(int arr[]){
+        Stack<Integer> stak = new Stack<>();
+        int nsl[]=new int[arr.length];
+        int nsr[]=new int[arr.length];
+            nextSmallerLeft(nsl);
+            nextSmallerRight(nsr);
+//            int max = arr[0]*(nsr[0]-nsl[0]-1);
+        int max = 0;
+            for(int i=0;i<arr.length;i++){
+                //area = height * width;
+                //where height = arr[i]
+//where width = nsr[i] - nsl[j]-1;----> -1 is done bcz we don't want to include the numbers at index i&j only the bars between them is to be enclosed
+                int area = arr[i]*(nsr[i]-nsl[i]-1);
+                max = Math.max(area,max);
+            }
+            return  max;
+    }
+
+    public static void main(String[] args) {
+        int nsr[]=new int[arr.length];
+        System.out.println("the Max Area of Rectangle In a Histogram is: "+calculatingMaxAreaInHistogram(arr));
+    }
+}
