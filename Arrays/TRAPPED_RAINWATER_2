@@ -1,0 +1,45 @@
+import java.util.*;
+public class trappedRainWater {
+
+    public static int[] forLeftmax(int leftmax[],int arr[]){
+        leftmax[0]=arr[0];
+        int max=arr[0];
+        for(int i=1;i<arr.length;i++){
+            if(max<arr[i]) {
+                max= arr[i];
+            }
+            leftmax[i]=max;
+        }
+        return leftmax;
+    }
+
+    public static int[] forRightmax(int rightmax[],int arr[]){
+        rightmax[arr.length-1]=arr[arr.length-1];
+        int max=arr[arr.length-1];
+        for(int i= arr.length-1;i>=0;i--){
+            if(max<arr[i]) {
+                max= arr[i];
+            }
+            rightmax[i]=max;
+        }
+       return rightmax;
+    }
+
+    public static int calculatingTrappedRainWater(int arr[]){
+        int leftmax[]= new int [arr.length];
+        int rightmax[]= new int[arr.length];
+        forLeftmax(leftmax,arr);
+        forRightmax(rightmax,arr);
+        int trappedwater = 0;
+        for(int i=0;i<arr.length;i++){
+            int min= Math.min(rightmax[i],leftmax[i]);
+            trappedwater+=min-arr[i];
+        }
+        return trappedwater;
+    }
+
+    public static void main(String[] args) {
+        int arr[]={4,2,0,6,3,2,5};
+        System.out.print(calculatingTrappedRainWater(arr));
+    }
+}
