@@ -1,6 +1,11 @@
+//this program only works for single numbers u can do for double or triple numbers by
+// 		while(stak.peek()>=48 && 57 >= stak.peek()){
+//          int b=stak.peek();
+// 		    stak.pop();
+//          }
 import java.util.*;
 public class StringDecode{
-        public static String decodeString(StringBuilder str) {
+        public static StringBuilder decodeString(StringBuilder str) {
             float b = 0;
             StringBuilder ans = new StringBuilder("");
             StringBuilder st = new StringBuilder("");
@@ -9,37 +14,35 @@ public class StringDecode{
             for (int i = 0; i < str.length(); i++) {
                 char ch = str.charAt(i);
                 stak.push(ch);
-                if (ch == ']') {
-                    flag = true;
+                if (ch == ']') {//ye while loop me enter krne k liye h kyuki jab ']' aayga tabhi to elements niklne shuru honge
+                    flag = true;//.:. flag = true
                 }
                 while ((!stak.isEmpty() && flag)) {
                     {
-                        if (stak.peek() == '[') {
+                        if (stak.peek() == '[') {// ye isliye h kyuki jese hi '[' aayjga mtlb letters cover ho chuke hain to bahar aajao loop se
                             flag = false;
                         }
                         if (stak.peek() >= 97 && 122 >= stak.peek()) {
-                            st = st.append(stak.peek());
+                            st = st.append(stak.peek());//isme st k letters store hore h -----> check notebook
                         }
                         stak.pop();
                     }
                     if (stak.peek() > 48 && 57 >= stak.peek()) {
-                        StringBuilder neww=new StringBuilder(st.reverse());
-                        b = stak.peek()-'0';
-                        stak.pop();
+                        b = stak.peek()-'0';//this is to convert the number that is at the top of the stack to number
+                        stak.pop();//now pop that number from the stack
                         for (int j=1;j<=b;j++) {
                             for(int p=0;p<st.length();p++){
-                                stak.push(st.charAt(p));
+                                stak.push(st.charAt(p));//now this is to push the letter b numbers of time into the stack
                             }
                         }
-                        st = new StringBuilder("");
+                        st = new StringBuilder("");//emptied the string as it will be rifilled again
                     }
                     }
                 }
-            while(!stak.isEmpty()) {
+            while(!stak.isEmpty()) {//now this is to copy all the stack elements into the string
                 ans =ans.append(stak.pop());
             }
-            String anns=ans.reverse().toString();
-            return anns;
+            return ans;
         }
     public static void main(String[] args) {
         StringBuilder str = new StringBuilder("3[a2[b]c]");
