@@ -1,0 +1,48 @@
+import java.util.*;
+public class StringDecode{
+        public static String decodeString(StringBuilder str) {
+            float b = 0;
+            StringBuilder ans = new StringBuilder("");
+            StringBuilder st = new StringBuilder("");
+            Stack<Character> stak = new Stack<>();
+            boolean flag=false;
+            for (int i = 0; i < str.length(); i++) {
+                char ch = str.charAt(i);
+                stak.push(ch);
+                if (ch == ']') {
+                    flag = true;
+                }
+                while ((!stak.isEmpty() && flag)) {
+                    {
+                        if (stak.peek() == '[') {
+                            flag = false;
+                        }
+                        if (stak.peek() >= 97 && 122 >= stak.peek()) {
+                            st = st.append(stak.peek());
+                        }
+                        stak.pop();
+                    }
+                    if (stak.peek() > 48 && 57 >= stak.peek()) {
+                        StringBuilder neww=new StringBuilder(st.reverse());
+                        b = stak.peek()-'0';
+                        stak.pop();
+                        for (int j=1;j<=b;j++) {
+                            for(int p=0;p<st.length();p++){
+                                stak.push(st.charAt(p));
+                            }
+                        }
+                        st = new StringBuilder("");
+                    }
+                    }
+                }
+            while(!stak.isEmpty()) {
+                ans =ans.append(stak.pop());
+            }
+            String anns=ans.reverse().toString();
+            return anns;
+        }
+    public static void main(String[] args) {
+        StringBuilder str = new StringBuilder("3[a2[b]c]");
+        System.out.println("this is string: "+decodeString(str));
+    }
+}
