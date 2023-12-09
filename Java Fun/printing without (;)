@@ -1,0 +1,11 @@
+//this happens because printf has a return type so that can be put into if statement  
+//public PrintStream printf(String format, Object ... args) {
+//        return format(format, args);
+//        }
+public class trick {
+    public static void main(String[] args) {
+        if(System.out.printf("hello world")==null){
+            
+        }
+    }
+}
