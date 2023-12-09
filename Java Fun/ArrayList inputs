@@ -1,0 +1,16 @@
+import java.util.*;
+public class trick {
+    public static void main(String[] args) {
+        List<Integer> values = Arrays.asList(54,22,1);//this will work just as fine & give the output but this only works when u know the inputs;
+//__________________________________________________________________________________________________________________________________________
+//    List<Integer> values = new ArrayList<Integer>()//so here we directly added values into arraylist without using values.add()
+//    {{//so here the (outer){-> this is known as anonymous inner class & (inner){->instantaneous initializer
+//        add(34);
+//        add(12);
+//        add(22);
+//    }};
+    for(int i:values){
+        System.out.println(i);
+    }
+    }
+}
