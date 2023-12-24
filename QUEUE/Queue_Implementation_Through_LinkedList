@@ -32,7 +32,7 @@ public class QueueImpLink {
         public static int remove() {
             Node temp = head;
             if (isEmpty()) {
-                System.out.println("QUEUE IS FULL");
+                System.out.println("QUEUE IS EMPTY");
                 return -1;
             }
             int front = head.data;
