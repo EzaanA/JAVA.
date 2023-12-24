@@ -1,0 +1,25 @@
+import java.util.*;
+public class JCF_QUEUE {
+    public static void main(String[] args) {
+        //so queue in JCF isnt a class but an interface
+//        so the queue is implemented by the help of two class
+//        (i) LinkedList
+        Queue<Integer> q1 = new LinkedList<>();
+//        (ii) ArrayDeque
+        Queue<Integer> q2 = new ArrayDeque<>();
+//____________________LinkedList_____________________
+        q1.add(3);
+        q1.add(21);
+        q1.add(13);
+        System.out.println(q1);
+        q1.remove(21);
+        System.out.println(q1);
+//____________________DEQUE_____________________
+        q2.add(67);
+        q2.add(7);
+        q2.add(6);
+        System.out.println(q2);
+        q2.remove(7);
+        System.out.println(q2);
+    }
+}
