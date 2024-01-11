@@ -1,0 +1,30 @@
+import java.util.Queue;
+import java.util.LinkedList;
+public class FirstNonRepeatingElemnt {
+
+    public static void elfinding(String str){
+        Queue<Character> q1 = new LinkedList<>();
+        int freq[]= new int[26];
+        for(int i=0;i<str.length();i++){
+            char ch =str.charAt(i);
+            int b=ch-'a';
+            q1.add(ch);
+            freq[b]+=1;
+            while(!q1.isEmpty()  && freq[q1.peek()-'a']>1){//ye isliye kara hai taaaki lagatar jiska freq 1 se km hai use hatane k liye
+                q1.remove();
+            }
+            if(q1.isEmpty()){
+                System.out.println("-1");
+            }
+            else{
+                System.out.println(q1.peek());
+            }
+        }
+
+        }
+
+    public static void main(String[] args) {
+        String str ="aabccxb";
+        elfinding(str);
+    }
+}
