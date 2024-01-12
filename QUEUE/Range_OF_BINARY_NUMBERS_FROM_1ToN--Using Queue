@@ -1,0 +1,24 @@
+import java.util.Queue;
+import java.util.LinkedList;
+//check notebook for better explanation
+public class noTobinary {
+    public static void noTobinary(int n){
+        Queue<String> q1 = new LinkedList<>();
+        q1.add("1");
+        while(n-- > 0){
+            String str1 = q1.peek();
+            q1.remove();
+            System.out.print(str1+" ");
+            String str2 = str1;
+            q1.add(str1+"0");
+            q1.add(str2+"1");
+        }
+    }
+
+public static void main(String[] args) {
+    int n=5;
+    noTobinary(n);
+}
+}
+
+
