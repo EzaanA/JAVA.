@@ -30,7 +30,7 @@ public class StkQUsingDeque {
             return dq.isEmpty();
         }
         public static void add(int data){
-            dq.add(data);
+            dq.addLast(data);
         }
         public static int remove(){
             return dq.removeFirst();
