@@ -2,14 +2,15 @@ import java.util.Queue;
 import java.util.LinkedList;
 import java.util.Stack;
 public class QueueReversal {
-    public static void reverseque(Queue q1){
+    public static Queue reverseque(Queue q1){
         Stack s = new Stack();
         while(!q1.isEmpty()){
            s.push(q1.remove());
         }
         while(!s.isEmpty()){
-            System.out.print(s.pop()+" ");
+            q1.add(s.pop());
         }
+        return q1;
     }
     public static void main(String[] args) {
         Queue<Integer> q1 = new LinkedList<>();
@@ -19,5 +20,6 @@ public class QueueReversal {
         q1.add(4);
         q1.add(5);
         reverseque(q1);
+        System.out.println(q1);
     }
 }
