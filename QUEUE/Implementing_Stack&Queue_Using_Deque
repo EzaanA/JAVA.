@@ -1,0 +1,64 @@
+import java.util.Deque;
+import java.util.LinkedList;
+
+public class StkQUsingDeque {
+
+    static class Stack{
+
+        static Deque<Integer> dq = new LinkedList<>();
+
+        public boolean isEmpty(){
+            return dq.isEmpty();
+        }
+
+        public  void push(int data){
+            dq.addLast(data);
+        }
+        public static int pop(){
+            int nu =dq.removeLast();
+            return nu;
+        }
+        public  int peek(){
+            return dq.getLast();
+        }
+    }
+
+    static class Queue{
+        static Deque<Integer> dq = new LinkedList<>();
+
+        public static boolean isEmpty(){
+            return dq.isEmpty();
+        }
+        public static void add(int data){
+            dq.add(data);
+        }
+        public static int remove(){
+            return dq.removeFirst();
+        }
+        public static int peek(){
+            return dq.getFirst();
+        }
+    }
+
+    public static void main(String[] args) {
+        Stack s = new Stack();
+        s.push(1);
+        s.push(2);
+        s.push(3);
+        s.push(4);
+        s.push(5);
+        while(!s.isEmpty()){
+            System.out.print(s.pop()+" ");
+        }
+        System.out.println();
+        Queue q = new Queue();
+        q.add(1);
+        q.add(2);
+        q.add(3);
+        q.add(4);
+        q.add(5);
+        while(!q.isEmpty()){
+            System.out.print(q.remove()+" ");
+        }
+    }
+}
