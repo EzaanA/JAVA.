@@ -1,0 +1,41 @@
+import java.util.*;
+public class Fractional_Knapsack {
+    public static void main(String[] args) {
+        int value[]={60,100,120};
+        int weight[]={10,20,30};
+        int W=50;
+
+        int ans[]=new int[value.length];
+        ArrayList<Integer> liss= new ArrayList<>();
+                double ratio[][] = new double[value.length][2];
+        for(int i=0;i<value.length;i++){
+                ratio[i][0]=i;
+                ratio[i][1]=value[i]/(double)weight[i];;
+            }
+
+        Arrays.sort(ratio,Comparator.comparingDouble(o->o[1]));
+        int capacity= W;
+        int finalval=0;
+        for(int i=ratio.length-1;i>=0;i--){//hamne ye ulta isliye kara kyuki list descending me chahiye & start me highest value milegi
+            int indx = (int)ratio[i][0];
+            if(capacity>=weight[indx]){//include full item
+                finalval+=value[indx];
+                capacity-=weight[indx];
+            }
+            else{
+                //include fractional item ko
+                finalval+=(ratio[i][1]*capacity);
+                break;
+            }
+        }
+
+        System.out.println(finalval);
+//        for(int i=0;i<value.length;i++) {
+//            System.out.println(ratio[i]);
+//        }
+
+
+
+
+    }
+}
