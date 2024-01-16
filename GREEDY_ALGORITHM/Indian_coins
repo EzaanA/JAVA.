@@ -1,0 +1,18 @@
+import java.util.*;
+public class Indian_coins {
+    public static void main(String[] args) {
+        int n=121;
+        int money[]={1,2,5,10,20,50,100,500,2000};
+        ArrayList<Integer> khulla = new ArrayList<>();
+        int count=0;
+        for(int i=money.length-1;i>=0;i--){
+            while(n-money[i]>-1){
+                count++;
+                n=n-money[i];
+                khulla.add(money[i]);
+            }
+        }
+        System.out.println(count);
+        System.out.println(khulla);
+    }
+}
