@@ -1,0 +1,41 @@
+import java.util.*;
+public class Job_sequencing_through_clss {
+
+    static class Jobs{
+        int deadline;
+        int profit;
+        int id;
+
+        Jobs(int i,int d,int p){
+            id=i;
+            profit=p;
+            deadline=d;
+        }
+    }
+
+    public static void main(String[] args) {
+        int jobsinfo[][] = {{4, 20},
+                {1, 10},
+                {1, 40},
+                {1, 30}};
+
+        ArrayList<Jobs>  joblist= new ArrayList<>();
+        for(int i =0;i<jobsinfo.length;i++){
+            joblist.add(new Jobs(i , jobsinfo[i][0],jobsinfo[i][1]));
+        }
+        Collections.sort(joblist,(obj1,obj2)->obj2.profit-obj1.profit);//so this will sort the ArrayList in Descending order according to th profit parameter
+        ArrayList<Integer> seq = new ArrayList<>();
+        int time=0;
+        for(int i =0;i<joblist.size();i++){
+            Jobs curr = joblist.get(i);
+            if(curr.deadline>time){
+                time++;
+                seq.add(curr.id);
+            }
+        }
+        System.out.println("MAx jobs " +seq.size() );
+        for (int i=0;i<seq.size();i++) {
+            System.out.print(seq.get(i)+" ");
+        }
+    }
+}
