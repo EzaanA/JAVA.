@@ -1,3 +1,4 @@
+//TC: O(n)--> linear tc
 public class PreOrder_Treversal {
 
     static class Node{
@@ -28,7 +29,7 @@ public class PreOrder_Treversal {
 
         public static void preorder(Node root){
             if(root==null){
-                System.out.print(-1+" ");
+                //System.out.print(-1+" "); --> if u want to print the same array that is given down then include this else nothing
                 return;
             }
 
