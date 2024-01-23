@@ -1,3 +1,4 @@
+//TC O(n2)
 public class Diameter_OF_A_Tree {
 
     static public class Node{
@@ -50,6 +51,6 @@ public class Diameter_OF_A_Tree {
         root.right.left=new Node(6);
         root.right.right=new Node(7);
 
-        System.out.println("MAX Length of a branch in this tree is : "+ diameterOfaTree(root));
+        System.out.println("Diameter of tree is : "+ diameterOfaTree(root));
     }
 }
