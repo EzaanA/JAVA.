@@ -1,0 +1,54 @@
+public class Diameter_Of_A_TreeAPPROACH_2 {
+
+
+    static public class Node{
+        int data;
+        Node left;
+        Node right;
+
+        Node(int data){
+            this.data=data;
+            this.left=null;
+            this.right=null;
+        }
+    }
+
+    static class Info{
+        int diam;
+        int ht;
+
+        public Info(int diam,int ht){
+            this.diam=diam;
+            this.ht=ht;
+        }
+    }
+
+    public static Info diameter(Node root){
+
+        if(root==null){
+            return new Info(0,0);
+        }
+
+        Info leftInfo= diameter(root.left);
+        Info RightInfo= diameter(root.right);
+
+        int diamm=Math.max(Math.max(leftInfo.diam,RightInfo.diam),leftInfo.ht+RightInfo.ht+1);//(ld,rd,slefdiam=lh+rh+1)
+        int htt=Math.max(leftInfo.ht,RightInfo.ht)+1;
+
+        return new Info(diamm,htt);
+    }
+
+
+    public static void main(String[] args) {
+    Node root=new Node(1);
+        root.left=new Node(2);
+        root.right=new Node(3);
+        root.left.left=new Node(4);
+        root.left.right=new Node(5);
+        root.right.left=new Node(6);
+        root.right.right=new Node(7);
+
+        System.out.println("THE MAXIMUM DIAMETER OF THE TREE IS: "+(diameter(root)).diam);
+
+    }
+}
