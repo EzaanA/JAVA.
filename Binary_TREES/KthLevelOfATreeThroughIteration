@@ -23,7 +23,7 @@ public class KthLevelOfATreeThroughIteration {
 
         while(!q.isEmpty()){
             Node curr=q.remove();
-            if(curr==null){
+            if(curr==null){// cause when this cond gets satisfied that means the level is changing or increasing  
                 lvl++;
                 if(q.isEmpty()){
                     break;
@@ -48,7 +48,7 @@ public class KthLevelOfATreeThroughIteration {
         }
     }
 
-    
+
     public static void main(String[] args) {
         Node root=new Node(1);
         root.left=new Node(2);
