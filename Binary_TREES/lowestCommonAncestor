@@ -1,0 +1,65 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class lowestCommonAncestor {
+
+    static public class Node{
+        int val;
+        Node left;
+        Node right;
+
+        public Node(int val){
+            this.val=val;
+            this.left=null;
+            this.right=null;
+        }
+    }
+
+
+    public static boolean getPath(Node root, int n,ArrayList path){
+        if(root==null){return false;}
+        path.add(root);
+        if(root.val==n){return true;}
+
+
+        boolean leftpath=getPath(root.left,n,path);
+        boolean rightpath =getPath(root.right,n,path);
+
+        if(leftpath||rightpath){
+            return true;
+        }
+
+        path.remove(path.size()-1);
+        return false;
+
+    }
+
+    public static Node lowestComnAncstr(Node root,int n1,int n2){
+        ArrayList<Node> list1 = new ArrayList<>();
+        ArrayList<Node> list2 = new ArrayList<>();
+
+        getPath(root,n1,list1);//-->THESE WILL RETRIEVE THE PATH IN THE LIST & IF SOME SPECIFIC COND WON'T BE TRUE FOR SOME
+        getPath(root,n2,list2);//- NODE THEN THAT NODE WILL BE REMOVED FROM THE GIVEN LIST
+        int i;
+        for(i=0;i<list1.size() && i<list2.size() ; i++){//THIS IS THE COND WHERE TWO ELEMENTS WONT BE EQUAL TO EACH OTHER THEN
+            if(list1.get(i)!=list2.get(i)){//THUS THAT'S WHERE our loop will break as no common left
+                break;
+            }
+        }
+        return list1.get(i-1);
+    }
+
+
+    public static void main(String[] args) {
+        Node root=new Node(1);
+        root.left=new Node(2);
+        root.right=new Node(3);
+        root.left.left=new Node(4);
+        root.left.right=new Node(5);
+        root.right.left=new Node(6);
+        root.right.right=new Node(7);
+        int n1=4,n2=6;
+      System.out.println(lowestComnAncstr(root,n1,n2).val);
+
+    }
+}
