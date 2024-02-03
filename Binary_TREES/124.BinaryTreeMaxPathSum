@@ -1,0 +1,39 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    static int maxSum ;
+
+    public static int soln(TreeNode root){
+        if(root==null){
+            return 0;
+        }
+
+        int left = soln(root.left);
+        int right=soln(root.right);
+        
+        int dono_l_r_ache_hai=left+right+root.val;
+        int root_acha_hai=root.val;
+        int lYar_acha_hai = Math.max(left,right)+root.val;
+
+        maxSum=Math.max(Math.max(maxSum,lYar_acha_hai),Math.max(dono_l_r_ache_hai,root_acha_hai));
+        return Math.max(root_acha_hai,lYar_acha_hai); //ye taaki or explore krle agr kahi acha milta h to krle
+    } 
+    public int maxPathSum(TreeNode root) {
+       maxSum=Integer.MIN_VALUE;
+       soln(root);
+       return  maxSum;
+    }
+}
