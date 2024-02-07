@@ -1,0 +1,84 @@
+import java.util.IllegalFormatCodePointException;
+
+public class mirrorBST {
+
+
+    static class Node {
+        int data;
+        Node left;
+        Node right;
+
+        public Node(int data) {
+            this.data = data;
+        }
+    }
+
+
+    public static Node insert(Node root, int val) {
+        if (root == null) {
+            root = new Node(val);
+            return root;
+        }
+        if (root.data > val) {
+            root.left = insert(root.left, val);
+        } else {
+            root.right = insert(root.right, val);
+        }
+        return root;
+    }
+
+
+    public static void inorder(Node root) {
+        if (root == null) {
+            return;
+        }
+        inorder(root.left);
+        System.out.print(root.data + " ");
+        inorder(root.right);
+    }
+
+    public static Node mirror(Node root){
+
+        if(root==null){
+            return null;
+        }
+
+        Node leftS= mirror(root.left);
+        Node rightS= mirror(root.right);
+
+        root.left=rightS;
+        root.right= leftS;
+
+        return root;
+    }
+
+    public static void preorder(Node root){
+        if(root == null){
+            return;
+        }
+        System.out.print(root.data+" ");
+        preorder(root.left);
+        preorder(root.right);
+
+    }
+
+
+    public static void main(String[] args) {
+        Node root = new Node(8);
+        root.left = new Node(5);
+        root.right = new Node(10);
+        root.left.left = new Node(3);
+        root.left.right = new Node(6);
+        root.right.right = new Node(11);
+
+//                    8
+//                  /   \
+//                 10     5
+//                /      /  \
+//               11     6     3
+//         MIRROR BST ️⬆
+
+        root = mirror(root);
+        preorder(root);
+    }
+}
