@@ -1,0 +1,80 @@
+import java.util.ArrayList;
+
+public class convertBSTtoBalancedBST {
+
+
+    static class Node {
+        int data;
+        Node left;
+        Node right;
+
+        public Node(int data) {
+            this.data = data;
+        }
+    }
+
+
+    public static void inorder(Node root,ArrayList<Integer> list) {
+        if (root == null) {
+            return;
+        }
+
+        inorder(root.left, list);
+        list.add(root.data);
+        inorder(root.right, list);
+    }
+
+
+    public static Node conversion(ArrayList<Integer> list , int start,int end){
+
+        if(start>end){
+            return null;
+        }
+
+
+        int mid = (start+end)/2;
+
+        Node sroot=new Node(list.get(mid));
+
+         sroot.left = conversion(list,start,mid-1);
+        sroot.right = conversion(list,mid+1,end);
+
+        return sroot;
+    }
+
+    public static void preorder(Node sroot){
+        if(sroot == null){
+            return;
+        }
+
+        System.out.print(sroot.data + " ");
+        preorder(sroot.left);
+        preorder(sroot.right);
+
+    }
+
+
+    public static void main(String[] args) {
+        Node root = new Node(8);
+        root.left=new Node(6);
+        root.left.left=new Node(5);
+        root.left.left.left=new Node(3);
+
+        root.right=new Node(10);
+        root.right.right=new Node(11);
+        root.right.right.right=new Node(12);
+
+
+        ArrayList<Integer> list = new ArrayList<>();
+
+        inorder(root,list);
+
+//        System.out.println(list);
+
+       Node sroot =  conversion(list , 0 , list.size()-1);
+
+       preorder(sroot);
+
+
+    }
+}
