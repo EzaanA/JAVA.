@@ -1,0 +1,89 @@
+//in this program in contrast to min Heap we just made 3 changes ie converted < in add to > && (in remove > to  <)
+import java.util.ArrayList;
+
+public class heapImp {
+
+     static class Heap{
+        ArrayList<Integer> arr = new ArrayList<>();
+
+        public void add(int data){
+            arr.add(data);
+            int child = arr.size()-1;
+            int parent = (child-1)/2;
+            while(arr.get(child) > arr.get(parent)){
+                int temp = arr.get(child);
+                arr.set(child,arr.get(parent));
+                arr.set(parent,temp);
+
+                child = parent;
+                parent = (child-1)/2;
+
+            }
+        }
+
+        public int peek(){
+            return arr.get(0);
+        }
+
+        private void heapify(int index){
+            int left =(2*index)+1;
+            int right = (2*index)+2;
+            int minIndx = index;
+            //(left<arr.size(),right<arr.size())-->if the node to be removed is a leaf node cuz left & right will be greater than arr.size;
+            if(left<arr.size() && arr.get(minIndx)<arr.get(left)){
+                minIndx = left;
+            }
+            if(right<arr.size() && arr.get(minIndx)<arr.get(right)){
+                minIndx = right;
+            }
+//            to ab jo bhi left,right,root me se minimum tha vo minIndx me aake store ho gaya hai
+
+//agar hamne remove vgra kara & hamara heap bigda vesa ka vesa nhi raha then ham usko fix krne k liye swap krenge
+//& swap k saath we'll call this function recursively until the whole heap becomes correct
+            if(minIndx != index){
+                //swap
+                int temp =arr.get(index);
+                arr.set(index,arr.get(minIndx));
+                arr.set(minIndx,temp);
+                heapify(minIndx);// so like mene ye wali node to shi krdi but iske chkkr me koi or si khrab krdi so in order to fix that
+                // we call heapify recursively;
+            }
+        }
+
+        public int remove(){
+            int data = arr.get(0);
+
+            //swap
+            int temp = arr.get(0);
+            arr.set(0,arr.get(arr.size()-1));
+            arr.set(arr.size()-1,temp);
+
+            //remove
+            arr.remove(arr.size()-1);
+
+            //Heapify means to fix the tree after removing an element
+            heapify(0);
+            return  data;
+        }
+
+        public boolean isEmpty(){
+            return arr.size()==0;
+        }
+
+    }
+
+    public static void main(String[] args) {
+        Heap h = new Heap();
+        h.add(3);
+        h.add(4);
+        h.add(1);
+        h.add(5);
+        h.remove();
+        while (!h.isEmpty()){
+            System.out.println(h.peek());
+            h.remove();
+        }
+
+    }
+
+}
