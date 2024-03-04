@@ -15,7 +15,7 @@ public class joinRopes {
             pq.add(min1+min2);
         }
 
-        System.out.println(cost);
+        System.out.println("Cost of connecting n ropes= "+cost);
 
     }
 }
