@@ -27,6 +27,28 @@ public class NQueens {
                 return false;
             }
         }
+//_______________SO RATHER THAN USING THE ABOVE LOOPS U CAN USE THE BELOW LOOPS TO KEEP THINGS SIMPLE!!!._________
+   // int r = row;
+  // int c = col;
+  // while(r>=0 && c>=0){
+  //   if(v[r][c]=='Q'){
+  //     return false;
+  //   }
+  //   r--;
+  //   c--;
+  // }
+
+  // r = row;
+  //  c = col;
+  // while(r>=0 && c<=v.size()){
+  //   if(v[r][c]=='Q'){
+  //     return false;
+  //   }
+  //   r--;
+  //   c++;
+  // }
+//_______________________________________
+
         return true;
     }
     public static  void NQueensproblem(char board[][],int row){
