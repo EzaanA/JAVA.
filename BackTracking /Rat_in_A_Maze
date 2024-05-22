@@ -13,8 +13,7 @@ public class Rat_In_A_Maze {
     }
 
     public static void ratinmaze(int arr[][], int row, int col, int n, int output[][]) {
-
-//base case
+    //base case
         if (row == n || col == n) {
             return;
         }
@@ -30,14 +29,9 @@ public class Rat_In_A_Maze {
             return;
         }
 
-
-
-
-
         ratinmaze(arr, row + 1, col, n, output);
         ratinmaze(arr, row, col + 1, n, output);
         output[row][col] = 0;
-
     }
 
 
