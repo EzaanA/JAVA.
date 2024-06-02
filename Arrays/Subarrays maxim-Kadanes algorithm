@@ -5,11 +5,10 @@ public static void method3(int arr[],int n){
             int cs=0;
             for(int i =0;i<n;i++){
                 cs=cs+arr[i];
+                max=Math.max(cs,max);
                 if(cs<0){
                     cs=0;
                 }
-                System.out.println("IM MS"+max);
-                max=Math.max(cs,max);
             }
             System.out.println(max);
     }
