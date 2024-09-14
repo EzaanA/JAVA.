@@ -1,0 +1,9 @@
+public class experimenting {
+    static {
+        System.out.println("Static block can be executed before a main block(ps:before version 1.6). WOW!");
+    }
+    static int a=2;//remove the static & compiler wil throw an error below
+    public static  void main(String args[]){
+    System.out.println(a);
+    }
+}
